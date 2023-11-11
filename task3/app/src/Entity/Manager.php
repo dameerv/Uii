@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Entity;
 
 use App\Repository\ManagerRepository;
@@ -95,7 +97,6 @@ class Manager
     public function removeOrder(Order $order): static
     {
         if ($this->orders->removeElement($order)) {
-            // set the owning side to null (unless already changed)
             if ($order->getManager() === $this) {
                 $order->setManager(null);
             }
@@ -104,7 +105,7 @@ class Manager
         return $this;
     }
 
-    public function getFio()
+    public function getFio(): string
     {
         return $this->firstName . ' ' . $this->lastName;
     }

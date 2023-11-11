@@ -7,15 +7,8 @@ namespace DoctrineMigrations;
 use Doctrine\DBAL\Schema\Schema;
 use Doctrine\Migrations\AbstractMigration;
 
-/**
- * Auto-generated Migration: Please modify to your needs!
- */
 final class Version20231111050342 extends AbstractMigration
 {
-    public function getDescription(): string
-    {
-        return '';
-    }
 
     public function up(Schema $schema): void
     {
@@ -82,7 +75,7 @@ final class Version20231111050342 extends AbstractMigration
         foreach ($managersData as $key => $manager) {
             $valuesArray[] = sprintf(
                 '(%u, \'%s\', \'%s\', \'%s\')',
-                ++$key,
+                $key + 1,
                 $manager['first_name'],
                 $manager['last_name'],
                 $manager['birth_date']
