@@ -13,7 +13,7 @@ services:
       - ./postgres/:/var/lib/postgresql/data:rw
     networks:
       uii:
-        ipv4_address: 192.168.221.2
+        ipv4_address: 192.168.222.2
 
   app:
     container_name: app_${PROJECT_NAME}
@@ -29,13 +29,13 @@ services:
     depends_on:
       - database
     environment:
-      XDEBUG_CONFIG: "remote_host=192.168.221.1 remote_enable=1"
+      XDEBUG_CONFIG: "remote_host=192.168.222.1 remote_enable=1"
       PHP_IDE_CONFIG: "serverName=PhpServerBase"
     networks:
       uii:
-        ipv4_address: 192.168.221.3
+        ipv4_address: 192.168.222.3
     extra_hosts:
-      - "host.docker.internal:192.168.221.1"
+      - "host.docker.internal:192.168.222.1"
 
   nginx_:
     container_name: nginx_${PROJECT_NAME}
@@ -52,7 +52,7 @@ services:
       - database
     networks:
       uii:
-        ipv4_address: 192.168.221.4
+        ipv4_address: 192.168.222.4
 
 networks:
   uii:
@@ -60,4 +60,4 @@ networks:
     ipam:
       driver: default
       config:
-        - subnet: 192.168.221.0/24
+        - subnet: 192.168.222.0/24
