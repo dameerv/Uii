@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello OrdersController!{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Заказы</h1>
+    <hr>
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">№</th>
+            <th scope="col">Имя</th>
+            <th scope="col">ФИО Менеджера</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for order in pager %}
+            <tr>
+                <th scope="row">{{ order.id }}</th>
+                <td>{{ order.name }}</td>
+                <td>{{ order.manager.fio }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {{ pagerfanta(pager, {'omitFirstPage': true }) }}
+</div>
+{% endblock %}
