@@ -21,7 +21,7 @@ class OrdersController extends AbstractController
         $pagerfanta = new Pagerfanta(
             new QueryAdapter($queryBuilder),
         );
-        $pagerfanta->setCurrentPage($request->query->get('page', 1));
+        $pagerfanta->setCurrentPage((int)$request->query->get('page', 1));
 
         return $this->render('orders/index.html.twig', [
             'pager' => $pagerfanta,
